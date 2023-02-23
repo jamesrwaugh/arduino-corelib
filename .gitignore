@@ -1,0 +1,54 @@
+.vscode/c_cpp_properties.json
+hardware/Lime/Lime-backups
+hardware/Lime/#auto_saved_files#
+hardware/Lime/fp-info-cache
+hardware/Lime/_autosave-*
+
+hardware/Lemon/Lemon-backups
+hardware/Lemon/Lemon-backups
+hardware/Lemon/#auto_saved_files#
+hardware/Lemon/fp-info-cache
+hardware/Lemon/_autosave-*
+
+*.zip
+
+*.lst
+*.map
+*.elf
+*.eep
+*.lss
+*.hex
+*.sym
+
+# Prerequisites
+*.d
+
+# Compiled Object files
+*.slo
+*.lo
+*.o
+*.obj
+
+# Precompiled Headers
+*.gch
+*.pch
+
+# Compiled Dynamic libraries
+*.so
+*.dylib
+*.dll
+
+# Fortran module files
+*.mod
+*.smod
+
+# Compiled Static libraries
+*.lai
+*.la
+*.a
+*.lib
+
+# Executables
+*.exe
+*.out
+*.app
