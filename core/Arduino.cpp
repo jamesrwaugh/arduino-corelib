@@ -24,6 +24,7 @@
 #include <avr/interrupt.h>
 #include <avr/io.h>
 #include <avr/pgmspace.h>
+#include <stdint.h>
 #include <util/delay.h>
 
 #define INVALID_PIN UINT8_MAX
