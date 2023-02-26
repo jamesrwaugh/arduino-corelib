@@ -29,6 +29,14 @@
 
 #define INVALID_PIN UINT8_MAX
 
+// From wiring_private.h
+#ifndef cbi
+#define cbi(sfr, bit) (_SFR_BYTE(sfr) &= ~_BV(bit))
+#endif
+#ifndef sbi
+#define sbi(sfr, bit) (_SFR_BYTE(sfr) |= _BV(bit))
+#endif
+
 volatile uint8_t* PortToDirectionMap[4] = {
     &DDRA,
     &DDRB,
@@ -232,41 +240,49 @@ uint8_t digitalRead(uint8_t pin) {
   return (*Pin.PIN & (1 << Pin.Number)) ? HIGH : LOW;
 }
 
-/*
-40 PA0 (ADC0)
-39 PA1 (ADC1)
-38 PA2 (ADC2)
-37 PA3 (ADC3)
-36 PA4 (ADC4)
-35 PA5 (ADC5)
-34 PA6 (ADC6)
-33 PA7 (ADC7)
-*/
+uint8_t pinToAdcRef324p(uint8_t pin) {
+  switch (pin) {
+    case 40:
+      return 0;
+    case 39:
+      return 1;
+    case 38:
+      return 2;
+    case 37:
+      return 3;
+    case 36:
+      return 4;
+    case 35:
+      return 5;
+    case 34:
+      return 6;
+    case 33:
+      return 7;
+    default:
+      return INVALID_PIN;
+  }
+}
 
 uint16_t analogRead(uint8_t pin) {
-  // Enable ADC
-  ADCSRA |= ((1 << ADEN));
+  uint8_t ref = pinToAdcRef324p(pin);
+  if (ref == INVALID_PIN) return 0;
 
+  // REFS0: AVCC with external capacitor at AREF pin
   // Set reference: AVCC with external capacitor at AREF pin
   ADMUX &= ~(1 << REFS1);
   ADMUX |= (1 << REFS0);
+  ADMUX |= (ref);
 
-  // Right adjust result
-  ADMUX &= ~(1 << ADLAR);
+  // start the conversion
+  sbi(ADCSRA, ADSC);
 
-  // Select pin setting lower MUX[4:0] bits
-  ADMUX |= (0b00000 | (pin - 40));
-
-  // Start convertsion
-  ADCSRA |= (1 << ADSC);
-
-  // Wait for conversion to finish
-  while (ADCSRA & (1 << ADSC))
+  // ADSC is cleared when the conversion finishes
+  while (bit_is_set(ADCSRA, ADSC))
     ;
 
-  uint16_t result = (ADCH << 8) | ADCL;
-
-  return result;
+  // ADC macro takes care of reading ADC register.
+  // avr-gcc implements the proper reading order: ADCL is read first.
+  return ADC;
 }
 
 void shiftOut(uint8_t dataPin, uint8_t clockPin, uint8_t bitOrder, uint8_t val) {

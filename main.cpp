@@ -10,11 +10,8 @@ int main() {
   digitalWrite(21, LOW);
 
   while (1) {
-    Serial.println("Hello World!");
-    digitalWrite(21, HIGH);
-    delay(500);
-
-    digitalWrite(21, LOW);
-    delay(500);
+    uint16_t value = analogRead(34);
+    Serial.println(value);
+    delay(100);
   }
 }

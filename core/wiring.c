@@ -255,6 +255,14 @@ void delayMicroseconds(unsigned int us) {
   // return = 4 cycles
 }
 
+void initAdc() {
+  // Enable ADC
+  ADCSRA |= ((1 << ADEN));
+
+  // Right adjust result
+  ADMUX &= ~(1 << ADLAR);
+}
+
 void init(void) {
   // this needs to be called before setup() or some functions won't
   // work there
@@ -406,4 +414,6 @@ void init(void) {
 #elif defined(UCSR0B)
   UCSR0B = 0;
 #endif
+
+  initAdc();
 }
