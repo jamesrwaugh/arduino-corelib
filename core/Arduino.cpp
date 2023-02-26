@@ -170,22 +170,16 @@ PinMap::PinMap(uint8_t physicalPin) {
   }
 
   uint8_t portNumber = PinToPortMap[physicalPin];
-  // uint8_t portNumber = 3;
 
   if (portNumber == INVALID_PIN || portNumber > 3) {
     IsValid = false;
     return;
   }
 
-  // DDR = (volatile uint8_t*)(pgm_read_word(PortToDirectionMap + portNumber));
-  // PORT = (volatile uint8_t*)(pgm_read_word(PortToPortMap + portNumber));
-  // Number = pgm_read_byte(PinToPinNumberMap + portNumber);
   DDR = PortToDirectionMap[portNumber];
   PORT = PortToPortMap[portNumber];
+  PIN = PortToPinMap[portNumber];
   Number = PinToPinNumberMap[physicalPin];
-  // DDR = &DDRD;
-  // PORT = &PORTD;
-  // Number = 7;
 
   if (Number == INVALID_PIN) {
     IsValid = false;
