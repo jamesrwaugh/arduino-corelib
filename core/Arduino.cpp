@@ -27,15 +27,9 @@
 #include <stdint.h>
 #include <util/delay.h>
 
-#define INVALID_PIN UINT8_MAX
+#include "wiring_private.h"
 
-// From wiring_private.h
-#ifndef cbi
-#define cbi(sfr, bit) (_SFR_BYTE(sfr) &= ~_BV(bit))
-#endif
-#ifndef sbi
-#define sbi(sfr, bit) (_SFR_BYTE(sfr) |= _BV(bit))
-#endif
+#define INVALID_PIN UINT8_MAX
 
 volatile uint8_t* PortToDirectionMap[4] = {
     &DDRA,

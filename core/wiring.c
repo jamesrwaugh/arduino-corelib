@@ -24,14 +24,7 @@
 #include <avr/io.h>
 
 #include "Arduino.h"
-
-// From wiring_private.h
-#ifndef cbi
-#define cbi(sfr, bit) (_SFR_BYTE(sfr) &= ~_BV(bit))
-#endif
-#ifndef sbi
-#define sbi(sfr, bit) (_SFR_BYTE(sfr) |= _BV(bit))
-#endif
+#include "wiring_private.h"
 
 // From arduino.h
 #define clockCyclesPerMicrosecond() (F_CPU / 1000000L)

@@ -88,7 +88,10 @@ SRC = core/wiring.c \
 CPPSRC = core/abi.cpp \
 	core/Arduino.cpp \
 	core/Print.cpp \
-	core/Serial.cpp \
+	core/HardwareSerial.cpp \
+	core/HardwareSerial0.cpp \
+	core/HardwareSerial1.cpp \
+	core/Stream.cpp \
 	main.cpp
 
 
