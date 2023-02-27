@@ -6,11 +6,11 @@ int main() {
 
   Serial.begin(9600);
 
-  pinMode(21, INPUT);
-
   while (1) {
-    uint8_t value = digitalRead(21);
-    Serial.println(value);
-    delay(100);
+    if (Serial.available()) {
+      char data = Serial.read();
+      Serial.print("Got: ");
+      Serial.println(data);
+    }
   }
 }
