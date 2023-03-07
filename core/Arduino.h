@@ -1,5 +1,6 @@
 #ifndef ARDUINO_JWSQ_H
 #define ARDUINO_JWSQ_H
+
 #include <stdint.h>
 
 #ifdef __cplusplus
@@ -13,11 +14,18 @@ typedef uint8_t byte;
 #define OUTPUT 1
 #define INPUT_PULLUP 2
 
+#define CHANGE 1
+#define FALLING 2
+#define RISING 3
+
 #define bitRead(value, bit) (((value) >> (bit)) & 0x01)
 #define bitSet(value, bit) ((value) |= (1UL << (bit)))
 #define bitClear(value, bit) ((value) &= ~(1UL << (bit)))
 #define bitToggle(value, bit) ((value) ^= (1UL << (bit)))
 #define bitWrite(value, bit, bitvalue) ((bitvalue) ? bitSet(value, bit) : bitClear(value, bit))
+
+#define noInterrupts() cli()
+#define interrupts() sei()
 
 enum PinValue {
   LOW = 0,
@@ -36,6 +44,9 @@ unsigned long millis(void);
 unsigned long micros(void);
 void yield(void);
 void shiftOut(uint8_t dataPin, uint8_t clockPin, uint8_t bitOrder, uint8_t val);
+uint8_t digitalPinToPort(uint8_t ss);
+uint8_t digitalPinToBitMask(uint8_t ss);
+volatile uint8_t* portModeRegister(uint8_t port);
 void init(void);
 
 #ifdef __cplusplus
