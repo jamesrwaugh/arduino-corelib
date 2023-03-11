@@ -248,7 +248,7 @@ void delayMicroseconds(unsigned int us) {
   // return = 4 cycles
 }
 
-void initAdc() {
+void initAdc(void) {
   // Enable ADC
   ADCSRA |= ((1 << ADEN));
 

@@ -41,7 +41,7 @@
 
 
 # MCU name
-MCU = atmega324p
+MCU = atmega168
 
 
 # Processor frequency.
@@ -92,6 +92,7 @@ CPPSRC = core/abi.cpp \
 	core/HardwareSerial0.cpp \
 	core/HardwareSerial1.cpp \
 	core/Stream.cpp \
+	core/chips/pinmap.cpp \
 	main.cpp
 
 
