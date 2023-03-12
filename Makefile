@@ -80,14 +80,14 @@ OBJDIR = .
 
 
 # List C source files here. (C dependencies are automatically generated.)
-SRC = core/wiring.c \
-	core/hooks.c
+SRC =
 
 
 # List C++ source files here. (C dependencies are automatically generated.)
 CPPSRC = core/abi.cpp \
 	core/Arduino.cpp \
 	core/Print.cpp \
+	core/wiring.cpp \
 	core/HardwareSerial.cpp \
 	core/HardwareSerial0.cpp \
 	core/HardwareSerial1.cpp \

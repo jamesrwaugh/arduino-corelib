@@ -1,11 +1,11 @@
 #include "pinmap.h"
 
-#ifdef __AVR_ATmega168__
+#include "chip.h"
+
+#ifdef HAVE_ATMEGA168
 #include "atmega168.h"
-#elif __AVR_ATmega324p__
+#elif HAVE_ATMEGA324
 #include "atmega324p.h"
-#else
-#error Compiling for unsupported AVR
 #endif
 
 PinMap::PinMap(uint8_t physicalPin) {
@@ -35,7 +35,7 @@ PinMap::PinMap(uint8_t physicalPin) {
 }
 
 uint8_t pinToAdcReference(uint8_t physicalPin) {
-#ifdef __AVR_ATmega168__
+#ifdef HAVE_ATMEGA168
   switch (physicalPin) {
     case 23:
       return 0;
@@ -52,7 +52,7 @@ uint8_t pinToAdcReference(uint8_t physicalPin) {
     default:
       return INVALID_ADC_REF;
   }
-#elif __AVR_ATmega324p__
+#elif HAVE_ATMEGA324
   switch (physicalPin) {
     case 40:
       return 0;

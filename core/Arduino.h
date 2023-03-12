@@ -1,11 +1,8 @@
 #ifndef ARDUINO_JWSQ_H
 #define ARDUINO_JWSQ_H
 
+#include <chips/pinmap.h>
 #include <stdint.h>
-
-#ifdef __cplusplus
-extern "C" {
-#endif
 
 typedef uint8_t boolean;
 typedef uint8_t byte;
@@ -42,15 +39,7 @@ uint8_t digitalRead(uint8_t pin);
 uint16_t analogRead(uint8_t pin);
 unsigned long millis(void);
 unsigned long micros(void);
-void yield(void);
 void shiftOut(uint8_t dataPin, uint8_t clockPin, uint8_t bitOrder, uint8_t val);
-uint8_t digitalPinToPort(uint8_t ss);
-uint8_t digitalPinToBitMask(uint8_t ss);
-volatile uint8_t* portModeRegister(uint8_t port);
 void init(void);
-
-#ifdef __cplusplus
-}
-#endif
 
 #endif

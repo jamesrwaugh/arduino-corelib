@@ -15,4 +15,9 @@ struct PinMap {
 #define INVALID_ADC_REF 255
 uint8_t pinToAdcReference(uint8_t physicalPin);
 
+// Backwards-compatible Arduino C API for pin mappings
+uint8_t digitalPinToPort(uint8_t ss);
+uint8_t digitalPinToBitMask(uint8_t ss);
+volatile uint8_t* portModeRegister(uint8_t port);
+
 #endif

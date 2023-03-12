@@ -1,7 +1,8 @@
 #ifndef ATMEGA324P_PINS_H
 #define ATMEGA324P_PINS_H
 
-#ifdef __AVR_ATmega324p__
+#include "chip.h"
+#ifdef HAVE_ATMEGA324
 
 #include <avr/interrupt.h>
 #include <avr/io.h>
