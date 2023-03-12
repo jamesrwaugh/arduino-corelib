@@ -77,3 +77,9 @@ uint8_t pinToAdcReference(uint8_t physicalPin) {
 #error Compiling for unsupported AVR
 #endif
 }
+
+uint8_t digitalPinToPort(uint8_t ss) { return PinToPortMap[ss]; }
+
+uint8_t digitalPinToBitMask(uint8_t ss) { return PinToPinNumberMap[ss]; }
+
+volatile uint8_t* portModeRegister(uint8_t port) { return PortToDirectionMap[port]; }
