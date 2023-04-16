@@ -27,19 +27,16 @@
 #include <stdint.h>
 #include <util/delay.h>
 
+#include "InterruptLock.h"
 #include "chips/pinmap.h"
 #include "wiring_private.h"
 
-struct ScopedInterruptLock {
-  ScopedInterruptLock() {
-    SReg = SREG;
-    cli();
-  }
-  ~ScopedInterruptLock() { SREG = SReg; }
+ScopedInterruptLock::ScopedInterruptLock() {
+  SReg = SREG;
+  cli();
+}
 
- private:
-  uint8_t SReg;
-};
+ScopedInterruptLock::~ScopedInterruptLock() { SREG = SReg; }
 
 void pinMode(uint8_t pin, uint8_t mode) {
   ScopedInterruptLock lock;
