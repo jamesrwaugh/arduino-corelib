@@ -1,8 +1,9 @@
 #ifndef ARDUINO_JWSQ_H
 #define ARDUINO_JWSQ_H
 
-#include <chips/pinmap.h>
 #include <stdint.h>
+
+#include "chips/pinmap.h"
 
 typedef uint8_t boolean;
 typedef uint8_t byte;
