@@ -12,6 +12,7 @@ core_src = files([
 
 core_inc = [
     'core/', 
+    '/home/james/local/avr/avr/include/'
 ]
 
 core_lib = static_library(
