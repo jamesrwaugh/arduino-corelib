@@ -18,6 +18,7 @@ core_inc = [
 core_lib = static_library(
     'core_lib', 
     core_src,
+    pic: false,
     include_directories : include_directories(core_inc)
 )
 
