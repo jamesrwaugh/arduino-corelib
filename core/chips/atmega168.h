@@ -1,5 +1,5 @@
-#ifndef ATMEGA324P_PINS_H
-#define ATMEGA324P_PINS_H
+#ifndef ATMEGA168_PINS_H
+#define ATMEGA168_PINS_H
 
 #include "chip.h"
 
@@ -10,21 +10,21 @@
 
 #define INVALID_PIN 255
 #define TOTAL_PIN_COUNT 28
-#define NUBMER_OF_PORTS 3
+#define NUMBER_OF_PORTS 3
 
-volatile uint8_t* PortToDirectionMap[NUBMER_OF_PORTS] = {
+volatile uint8_t* PortToDirectionMap[NUMBER_OF_PORTS] = {
     &DDRB,
     &DDRC,
     &DDRD,
 };
 
-volatile uint8_t* PortToPortMap[NUBMER_OF_PORTS] = {
+volatile uint8_t* PortToPortMap[NUMBER_OF_PORTS] = {
     &PORTB,
     &PORTC,
     &PORTD,
 };
 
-volatile uint8_t* PortToPinMap[NUBMER_OF_PORTS] = {
+volatile uint8_t* PortToPinMap[NUMBER_OF_PORTS] = {
     &PINB,
     &PINC,
     &PIND,

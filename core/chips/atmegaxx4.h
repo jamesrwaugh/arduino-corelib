@@ -1,31 +1,31 @@
-#ifndef ATMEGA324P_PINS_H
-#define ATMEGA324P_PINS_H
+#ifndef ATMEGAXX4P_PINS_H
+#define ATMEGAXX4P_PINS_H
 
 #include "chip.h"
-#ifdef HAVE_ATMEGA324
+#ifdef HAVE_ATMEGAXX4
 
 #include <avr/interrupt.h>
 #include <avr/io.h>
 
 #define INVALID_PIN 255
 #define TOTAL_PIN_COUNT 40
-#define NUBMER_OF_PORTS 4
+#define NUMBER_OF_PORTS 4
 
-volatile uint8_t* PortToDirectionMap[NUBMER_OF_PORTS] = {
+volatile uint8_t* PortToDirectionMap[NUMBER_OF_PORTS] = {
     &DDRA,
     &DDRB,
     &DDRC,
     &DDRD,
 };
 
-volatile uint8_t* PortToPortMap[NUBMER_OF_PORTS] = {
+volatile uint8_t* PortToPortMap[NUMBER_OF_PORTS] = {
     &PORTA,
     &PORTB,
     &PORTC,
     &PORTD,
 };
 
-volatile uint8_t* PortToPinMap[NUBMER_OF_PORTS] = {
+volatile uint8_t* PortToPinMap[NUMBER_OF_PORTS] = {
     &PINA,
     &PINB,
     &PINC,
@@ -34,7 +34,7 @@ volatile uint8_t* PortToPinMap[NUBMER_OF_PORTS] = {
 
 uint8_t PinToPinNumberMap[TOTAL_PIN_COUNT + 1] = {
     /* 0  */ INVALID_PIN,
-    // PORTB
+    // PORT B
     /* 1  */ 0,
     /* 2  */ 1,
     /* 3  */ 2,
@@ -82,7 +82,7 @@ uint8_t PinToPinNumberMap[TOTAL_PIN_COUNT + 1] = {
 
 const uint8_t PinToPortMap[TOTAL_PIN_COUNT + 1] = {
     /* 0  */ INVALID_PIN,
-    // PORTB
+    // PORT B
     /* 1  */ 1,
     /* 2  */ 1,
     /* 3  */ 1,

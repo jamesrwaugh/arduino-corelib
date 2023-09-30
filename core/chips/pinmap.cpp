@@ -4,8 +4,8 @@
 
 #ifdef HAVE_ATMEGA168
 #include "atmega168.h"
-#elif HAVE_ATMEGA324
-#include "atmega324p.h"
+#elif HAVE_ATMEGAXX4
+#include "atmegaxx4.h"
 #endif
 
 PinMap::PinMap(uint8_t physicalPin) {
@@ -16,7 +16,7 @@ PinMap::PinMap(uint8_t physicalPin) {
 
   uint8_t portNumber = PinToPortMap[physicalPin];
 
-  if (portNumber == INVALID_PIN || portNumber > NUBMER_OF_PORTS) {
+  if (portNumber == INVALID_PIN || portNumber > NUMBER_OF_PORTS) {
     IsValid = false;
     return;
   }
@@ -52,7 +52,7 @@ uint8_t pinToAdcReference(uint8_t physicalPin) {
     default:
       return INVALID_ADC_REF;
   }
-#elif HAVE_ATMEGA324
+#elif HAVE_ATMEGAXX4
   switch (physicalPin) {
     case 40:
       return 0;
