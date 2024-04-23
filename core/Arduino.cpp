@@ -36,7 +36,9 @@ ScopedInterruptLock::ScopedInterruptLock() {
   cli();
 }
 
-ScopedInterruptLock::~ScopedInterruptLock() { SREG = SReg; }
+ScopedInterruptLock::~ScopedInterruptLock() {
+  SREG = SReg;
+}
 
 void pinMode(uint8_t pin, uint8_t mode) {
   ScopedInterruptLock lock;
