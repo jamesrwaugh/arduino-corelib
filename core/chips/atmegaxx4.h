@@ -70,14 +70,14 @@ uint8_t PinToPinNumberMap[TOTAL_PIN_COUNT + 1] = {
     /* 31 */ INVALID_PIN,
     /* 32 */ INVALID_PIN,
     // PORT A
-    /* 33 */ 0,
-    /* 34 */ 1,
-    /* 35 */ 2,
-    /* 36 */ 3,
-    /* 37 */ 4,
-    /* 38 */ 5,
-    /* 39 */ 6,
-    /* 40 */ 7,
+    /* 33 */ 7,
+    /* 34 */ 6,
+    /* 35 */ 5,
+    /* 36 */ 4,
+    /* 37 */ 3,
+    /* 38 */ 2,
+    /* 39 */ 1,
+    /* 40 */ 0,
 };
 
 const uint8_t PinToPortMap[TOTAL_PIN_COUNT + 1] = {
