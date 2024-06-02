@@ -6,7 +6,7 @@
 #define HAVE_ATMEGA168 1
 #elif defined(__AVR_ATmega324P__) || defined(__AVR_ATmega324A__) ||                               \
     defined(__AVR_ATmega324PA__) || defined(__AVR_ATmega644P__) || defined(__AVR_ATmega644A__) || \
-    defined(__AVR_ATmega644PA__)
+    defined(__AVR_ATmega644PA__) || defined(__AVR_ATmega1284P__)
 #define HAVE_ATMEGAXX4 1
 #endif
 
