@@ -29,7 +29,7 @@
 // From arduino.h
 #define clockCyclesPerMicrosecond() (F_CPU / 1000000L)
 #define clockCyclesToMicroseconds(a) ((a) / clockCyclesPerMicrosecond())
-#define microsecondsToClockCycles(a) ((a)*clockCyclesPerMicrosecond())
+#define microsecondsToClockCycles(a) ((a) * clockCyclesPerMicrosecond())
 
 // the prescaler is set so that timer0 ticks every 64 clock cycles, and the
 // the overflow handler is called every 256 ticks.
@@ -58,6 +58,7 @@ ISR(TIMER0_OVF_vect)
   // (volatile variables must be read from memory on every access)
   unsigned long m = timer0_millis;
   unsigned char f = timer0_fract;
+  unsigned long k = timer0_overflow_count;
 
   m += MILLIS_INC;
   f += FRACT_INC;
@@ -65,10 +66,11 @@ ISR(TIMER0_OVF_vect)
     f -= FRACT_MAX;
     m += 1;
   }
+  k += 1;
 
   timer0_fract = f;
   timer0_millis = m;
-  timer0_overflow_count++;
+  timer0_overflow_count = k;
 }
 
 unsigned long millis(void) {
