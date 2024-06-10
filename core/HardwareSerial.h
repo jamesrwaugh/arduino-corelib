@@ -121,6 +121,7 @@ class HardwareSerial : public Stream {
   void end();
   virtual int available(void);
   virtual int peek(void);
+  int peekLast(void);
   virtual int read(void);
   virtual int availableForWrite(void);
   virtual void flush(void);
@@ -132,6 +133,7 @@ class HardwareSerial : public Stream {
   using Print::write;  // pull in write(str) and write(buf, size) from Print
   operator bool() { return true; }
   const unsigned char *tx_buffer() const;
+  const unsigned char *rx_buffer() const;
 
   // Interrupt handlers - Not intended to be called externally
   inline void _rx_complete_irq(void);

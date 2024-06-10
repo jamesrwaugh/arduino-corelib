@@ -174,6 +174,18 @@ int HardwareSerial::peek(void) {
   }
 }
 
+int HardwareSerial::peekLast(void) {
+  if (_rx_buffer_head == _rx_buffer_tail) {
+    return -1;
+  } else {
+    if (_rx_buffer_head == 0) {
+      return _rx_buffer[SERIAL_RX_BUFFER_SIZE - 1];
+    } else {
+      return _rx_buffer[_rx_buffer_head - 1];
+    }
+  }
+}
+
 int HardwareSerial::read(void) {
   // if the head isn't ahead of the tail, we don't have any characters
   if (_rx_buffer_head == _rx_buffer_tail) {
@@ -270,6 +282,10 @@ size_t HardwareSerial::write(uint8_t c) {
 
 const unsigned char* HardwareSerial::tx_buffer() const {
   return _tx_buffer;
+}
+
+const unsigned char* HardwareSerial::rx_buffer() const {
+  return _rx_buffer;
 }
 
 #endif  // whole file
