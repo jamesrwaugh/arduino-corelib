@@ -16,6 +16,14 @@ core_lib = static_library(
     'core_lib',
     core_src,
     pic: false,
+    cpp_args: [
+        '-mmcu=atmega644p',
+        '-DF_CPU=7372800',
+    ],
+    c_args: [
+        '-mmcu=atmega644p',
+        '-DF_CPU=7372800',
+    ],
     include_directories: include_directories(core_inc),
 )
 
