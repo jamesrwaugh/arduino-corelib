@@ -20,6 +20,10 @@ core_lib = static_library(
         '-mmcu=atmega644p',
         '-DF_CPU=7372800',
     ],
+    override_options: [
+        'buildtype=minsize',
+        'optimization=s',
+    ],
     c_args: [
         '-mmcu=atmega644p',
         '-DF_CPU=7372800',
