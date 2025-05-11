@@ -10,7 +10,7 @@ core_src = files(
     'core/wiring.cpp',
 )
 
-core_inc = ['core/', '/usr/local/avr/include/']
+core_inc = ['core/', '/usr/avr/include/', '/usr/local/avr/include/']
 
 core_lib = static_library(
     'core_lib',
