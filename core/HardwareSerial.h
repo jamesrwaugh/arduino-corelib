@@ -44,14 +44,14 @@
 #if ((RAMEND - RAMSTART) < 1023)
 #define SERIAL_TX_BUFFER_SIZE 16
 #else
-#define SERIAL_TX_BUFFER_SIZE 64
+#define SERIAL_TX_BUFFER_SIZE 32
 #endif
 #endif
 #if !defined(SERIAL_RX_BUFFER_SIZE)
 #if ((RAMEND - RAMSTART) < 1023)
 #define SERIAL_RX_BUFFER_SIZE 16
 #else
-#define SERIAL_RX_BUFFER_SIZE 64
+#define SERIAL_RX_BUFFER_SIZE 32
 #endif
 #endif
 #if (SERIAL_TX_BUFFER_SIZE > 256)
@@ -116,7 +116,9 @@ class HardwareSerial : public Stream {
  public:
   inline HardwareSerial(volatile uint8_t *ubrrh, volatile uint8_t *ubrrl, volatile uint8_t *ucsra,
                         volatile uint8_t *ucsrb, volatile uint8_t *ucsrc, volatile uint8_t *udr);
-  void begin(unsigned long baud) { begin(baud, SERIAL_8N1); }
+  void begin(unsigned long baud) {
+    begin(baud, SERIAL_8N1);
+  }
   void begin(unsigned long, uint8_t);
   void end();
   virtual int available(void);
@@ -126,12 +128,22 @@ class HardwareSerial : public Stream {
   virtual int availableForWrite(void);
   virtual void flush(void);
   virtual size_t write(uint8_t);
-  inline size_t write(unsigned long n) { return write((uint8_t)n); }
-  inline size_t write(long n) { return write((uint8_t)n); }
-  inline size_t write(unsigned int n) { return write((uint8_t)n); }
-  inline size_t write(int n) { return write((uint8_t)n); }
+  inline size_t write(unsigned long n) {
+    return write((uint8_t)n);
+  }
+  inline size_t write(long n) {
+    return write((uint8_t)n);
+  }
+  inline size_t write(unsigned int n) {
+    return write((uint8_t)n);
+  }
+  inline size_t write(int n) {
+    return write((uint8_t)n);
+  }
   using Print::write;  // pull in write(str) and write(buf, size) from Print
-  operator bool() { return true; }
+  operator bool() {
+    return true;
+  }
   const unsigned char *tx_buffer() const;
   const unsigned char *rx_buffer() const;
 
